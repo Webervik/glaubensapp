@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f0e7">
+  <title>Weite – Glauben entdecken</title>
+  <meta name="description" content="Christlichen Glauben offen, wissenschaftlich und ohne Glaubensdruck erkunden.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#start" aria-label="Weite Startseite">
+      <span class="brand-mark" aria-hidden="true"><span></span></span>
+      <span>weite</span>
+    </a>
+    <nav aria-label="Hauptnavigation">
+      <a class="active" href="#start">Heute</a>
+      <a href="#wege">Wege</a>
+      <a href="#fragen">Fragen</a>
+    </nav>
+    <button class="profile" aria-label="Profil öffnen">VW</button>
+  </header>
+
+  <main>
+    <section class="hero" id="start">
+      <div class="hero-copy">
+        <p class="eyebrow">Sonntag, 19. Juli</p>
+        <h1>Du musst nicht alles glauben,<br><em>um anfangen zu können.</em></h1>
+        <p class="lead">Ein offener Raum für deine Fragen, Zweifel und Entdeckungen rund um den christlichen Glauben.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#frage-des-tages">Heute entdecken <span>→</span></a>
+          <button class="button quiet" data-open-dialog>Eine Frage stellen</button>
+        </div>
+      </div>
+      <div class="orbit" aria-hidden="true">
+        <div class="orbital-line one"></div>
+        <div class="orbital-line two"></div>
+        <div class="sun"></div>
+        <div class="dot dot-a"></div><div class="dot dot-b"></div><div class="dot dot-c"></div>
+        <p>fragen<br>sind<br>willkommen</p>
+      </div>
+    </section>
+
+    <section class="today section" id="frage-des-tages">
+      <div class="section-heading">
+        <div><p class="eyebrow">Ein Gedanke für heute</p><h2>Was, wenn Zweifel zum Glauben gehören?</h2></div>
+        <span class="duration">8 min</span>
+      </div>
+      <article class="feature-card">
+        <div class="feature-visual">
+          <span class="chapter">01</span>
+          <blockquote>„Ich glaube;<br>hilf meinem<br>Unglauben!“</blockquote>
+          <cite>Markus 9,24 · BasisBibel</cite>
+        </div>
+        <div class="feature-content">
+          <div class="tags"><span>Bibel im Kontext</span><span>Zweifel</span></div>
+          <p class="feature-intro">Dieser kurze Satz enthält beides: Vertrauen und Unsicherheit. Der biblische Text verlangt keine widerspruchsfreie Gewissheit.</p>
+          <div class="perspectives">
+            <button class="perspective active" data-perspective="context">Im Kontext</button>
+            <button class="perspective" data-perspective="viewpoints">Perspektiven</button>
+            <button class="perspective" data-perspective="practice">Für dich</button>
+          </div>
+          <div class="perspective-copy" aria-live="polite">
+            Der Vater eines kranken Kindes spricht diesen Satz zu Jesus. Er formuliert kein Glaubensbekenntnis, sondern eine Spannung – und wird damit ernst genommen.
+          </div>
+          <button class="text-link" data-continue>Weiterlesen <span>→</span></button>
+        </div>
+      </article>
+    </section>
+
+    <section class="section paths" id="wege">
+      <div class="section-heading">
+        <div><p class="eyebrow">In deinem Tempo</p><h2>Wege zum Weiterdenken</h2></div>
+        <a href="#alle-wege">Alle Wege <span>→</span></a>
+      </div>
+      <div class="path-grid">
+        <article class="path-card sage">
+          <div class="path-icon" aria-hidden="true">≋</div>
+          <div><p class="meta">7 Etappen · Einsteiger:innen</p><h3>Die Bibel lesen, ohne sie wörtlich zu nehmen</h3><p>Entdecke, was historische Kontexte, Textsorten und verschiedene Lesarten verändern.</p></div>
+          <button aria-label="Weg starten" data-start-path>→</button>
+        </article>
+        <article class="path-card coral">
+          <div class="path-icon" aria-hidden="true">◌</div>
+          <div><p class="meta">5 Etappen · Persönlich</p><h3>Glauben nach dem Fundamentalismus</h3><p>Was darf bleiben, wenn alte Gewissheiten nicht mehr tragen?</p></div>
+          <button aria-label="Weg starten">→</button>
+        </article>
+        <article class="path-card blue">
+          <div class="path-icon" aria-hidden="true">✦</div>
+          <div><p class="meta">6 Etappen · Vertiefung</p><h3>Wer war Jesus – und wer ist er heute?</h3><p>Historische Forschung und persönliche Deutung im Gespräch.</p></div>
+          <button aria-label="Weg starten">→</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="question-section" id="fragen">
+      <div class="question-copy">
+        <p class="eyebrow">Frag, was dich wirklich beschäftigt</p>
+        <h2>Keine Frage ist<br>zu groß. Oder zu klein.</h2>
+        <p>Du bekommst keine fertige Wahrheit, sondern Orientierung: verständlich, mit Quellen und unterschiedlichen Perspektiven.</p>
+      </div>
+      <form class="ask-box" id="ask-form">
+        <label for="question">Deine Frage</label>
+        <textarea id="question" rows="3" placeholder="Zum Beispiel: Kann ich an Gott glauben, ohne mir Gott als Person vorzustellen?"></textarea>
+        <div class="ask-footer"><span>Deine Frage bleibt auf diesem Gerät.</span><button class="button dark" type="submit">Frage erkunden <span>→</span></button></div>
+      </form>
+    </section>
+
+    <section class="principles section">
+      <p class="eyebrow">Was du von Weite erwarten kannst</p>
+      <div class="principle-grid">
+        <article><span>01</span><h3>Offen</h3><p>Du musst hier nichts bekennen oder beweisen.</p></article>
+        <article><span>02</span><h3>Fundiert</h3><p>Forschung, Quellen und Streitfragen werden sichtbar.</p></article>
+        <article><span>03</span><h3>Vielstimmig</h3><p>Verschiedene christliche Perspektiven kommen zu Wort.</p></article>
+        <article><span>04</span><h3>Sicher</h3><p>Menschenwürde und deine Grenzen stehen nicht zur Debatte.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#start"><span class="brand-mark"><span></span></span><span>weite</span></a><p>Glaube entdecken. Fragen behalten.</p><span>Ein erster Prototyp</span></footer>
+
+  <dialog id="question-dialog">
+    <button class="dialog-close" aria-label="Schließen">×</button>
+    <p class="eyebrow">Deine Frage</p><h2>Was beschäftigt dich?</h2>
+    <p>Hier darf eine Frage unfertig sein. Wir zeigen dir anschließend Hintergründe, verschiedene Sichtweisen und mögliche nächste Schritte.</p>
+    <form method="dialog"><textarea rows="4" placeholder="Schreib einfach, wie du es sagen würdest …"></textarea><button class="button primary" value="submit">Frage erkunden <span>→</span></button></form>
+  </dialog>
+  <section class="journey" id="journey" aria-hidden="true">
+    <header class="journey-topbar">
+      <button class="journey-close" aria-label="Weg verlassen">← <span>Übersicht</span></button>
+      <a class="brand" href="#"><span class="brand-mark" aria-hidden="true"><span></span></span><span>weite</span></a>
+      <span class="journey-count">1 / 7</span>
+    </header>
+    <div class="journey-progress" aria-hidden="true"><span></span></div>
+    <div class="journey-layout">
+      <aside class="journey-aside">
+        <p class="eyebrow">Weg 01</p>
+        <h2>Die Bibel lesen, ohne sie wörtlich zu nehmen</h2>
+        <nav aria-label="Etappen dieses Weges" class="lesson-nav"></nav>
+      </aside>
+      <article class="lesson" aria-live="polite">
+        <div class="lesson-number"></div>
+        <p class="eyebrow lesson-kicker"></p>
+        <h1 class="lesson-title"></h1>
+        <p class="lesson-lead"></p>
+        <div class="lesson-body"></div>
+        <section class="reflection">
+          <p class="eyebrow">Ein Moment für dich</p>
+          <h3 class="reflection-question"></h3>
+          <label for="reflection-note">Deine Gedanken <span>– nur auf diesem Gerät</span></label>
+          <textarea id="reflection-note" rows="4" placeholder="Du kannst schreiben, musst aber nicht …"></textarea>
+        </section>
+        <div class="lesson-actions">
+          <button class="button quiet lesson-back">← Zurück</button>
+          <button class="button primary lesson-next">Nächste Etappe <span>→</span></button>
+        </div>
+      </article>
+    </div>
+  </section>
+  <div class="toast" role="status" aria-live="polite">Danke. Im nächsten Prototyp wird deine Frage wirklich beantwortet.</div>
+  <script src="app.js"></script>
+</body>
+</html>
