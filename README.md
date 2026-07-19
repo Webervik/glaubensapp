@@ -1,6 +1,6 @@
-# Weite
+# WEITER GLAUBEN
 
-Erster klickbarer Prototyp für eine offene, wissenschaftlich informierte und spirituell sensible Glaubens-App.
+Erster klickbarer Prototyp für eine offene, wissenschaftlich informierte und spirituell sensible Glaubens-App. Der Name ist bewusst mehrdeutig: im Glauben weitergehen und zugleich weiter, offener glauben.
 
 Zum Starten `index.html` direkt im Browser öffnen oder im Ordner einen lokalen Webserver starten.
 
