@@ -1,0 +1,24 @@
+[Unit]
+Description=WEITER GLAUBEN encrypted progress storage
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/glaubensapp
+Environment=NODE_ENV=production
+Environment=PORT=8787
+Environment=DATA_DIR=/var/lib/weiter-glauben
+ExecStart=/usr/bin/node /var/www/glaubensapp/server/progress-api.mjs
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/weiter-glauben
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+
+[Install]
+WantedBy=multi-user.target

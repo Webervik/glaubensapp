@@ -197,29 +197,150 @@ progressDialog.querySelector('[data-export]').addEventListener('click', () => {
   showToastMessage(includeNotes ? 'Stand und Notizen wurden gesichert.' : 'Dein Stand wurde gesichert.');
 });
 
+function applyProgressData(data) {
+  const validLessons = Array.isArray(data.completedLessons) && data.completedLessons.every(index => Number.isInteger(index) && index >= 0 && index < lessons.length);
+  if (data.format !== 'weiter-glauben-progress' || data.version !== 1 || !validLessons) throw new Error('invalid');
+  currentLesson = Number.isInteger(data.currentLesson) ? Math.max(0, Math.min(data.currentLesson, lessons.length - 1)) : 0;
+  completedLessons = new Set(data.completedLessons);
+  localStorage.setItem('weite-current-lesson', currentLesson);
+  localStorage.setItem('weite-completed-lessons', JSON.stringify([...completedLessons]));
+  if (Array.isArray(data.reflections)) {
+    data.reflections.slice(0, lessons.length).forEach((note, index) => {
+      if (typeof note === 'string') localStorage.setItem(`weite-reflection-${index}`, note);
+    });
+  }
+  updateProgressSummary();
+}
+
 document.querySelector('#import-progress').addEventListener('change', async event => {
   const file = event.target.files[0];
   if (!file) return;
   try {
     const data = JSON.parse(await file.text());
-    const validLessons = Array.isArray(data.completedLessons) && data.completedLessons.every(index => Number.isInteger(index) && index >= 0 && index < lessons.length);
-    if (data.format !== 'weiter-glauben-progress' || data.version !== 1 || !validLessons) throw new Error('invalid');
-    currentLesson = Number.isInteger(data.currentLesson) ? Math.max(0, Math.min(data.currentLesson, lessons.length - 1)) : 0;
-    completedLessons = new Set(data.completedLessons);
-    localStorage.setItem('weite-current-lesson', currentLesson);
-    localStorage.setItem('weite-completed-lessons', JSON.stringify([...completedLessons]));
-    if (Array.isArray(data.reflections)) {
-      data.reflections.slice(0, lessons.length).forEach((note, index) => {
-        if (typeof note === 'string') localStorage.setItem(`weite-reflection-${index}`, note);
-      });
-    }
-    updateProgressSummary();
+    applyProgressData(data);
     showToastMessage('Dein gespeicherter Stand wurde wiederhergestellt.');
   } catch {
     showToastMessage('Diese Datei ist keine gültige WEITER-GLAUBEN-Sicherung.');
   } finally {
     event.target.value = '';
   }
+});
+
+const recoveryInput = progressDialog.querySelector('#recovery-code');
+const syncBox = progressDialog.querySelector('.sync-box');
+const codeAlphabet = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
+
+function generateRecoveryCode() {
+  const bytes = crypto.getRandomValues(new Uint8Array(16));
+  let bits = 0;
+  let value = 0;
+  let result = '';
+  for (const byte of bytes) {
+    value = (value << 8) | byte;
+    bits += 8;
+    while (bits >= 5) {
+      result += codeAlphabet[(value >>> (bits - 5)) & 31];
+      bits -= 5;
+    }
+  }
+  if (bits > 0) result += codeAlphabet[(value << (5 - bits)) & 31];
+  return result.match(/.{1,4}/g).join('-');
+}
+
+function normalizeRecoveryCode(value) {
+  return value.toUpperCase().replace(/[^0-9A-Z]/g, '').replace(/[IL]/g, '1').replace(/O/g, '0');
+}
+
+function formatRecoveryCode(value) {
+  const normalized = normalizeRecoveryCode(value).slice(0, 26);
+  return normalized.match(/.{1,4}/g)?.join('-') || '';
+}
+
+function bytesToBase64Url(bytes) {
+  let binary = '';
+  bytes.forEach(byte => { binary += String.fromCharCode(byte); });
+  return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '');
+}
+
+function base64UrlToBytes(value) {
+  const padding = '='.repeat((4 - value.length % 4) % 4);
+  const binary = atob(value.replace(/-/g, '+').replace(/_/g, '/') + padding);
+  return Uint8Array.from(binary, character => character.charCodeAt(0));
+}
+
+async function recoveryCredentials(displayCode) {
+  const code = normalizeRecoveryCode(displayCode);
+  if (code.length !== 26 || [...code].some(character => !codeAlphabet.includes(character))) throw new Error('invalid_code');
+  const encoder = new TextEncoder();
+  const keyBytes = await crypto.subtle.digest('SHA-256', encoder.encode(`weiter-glauben:key:${code}`));
+  const idBytes = await crypto.subtle.digest('SHA-256', encoder.encode(`weiter-glauben:lookup:${code}`));
+  const key = await crypto.subtle.importKey('raw', keyBytes, { name: 'AES-GCM' }, false, ['encrypt', 'decrypt']);
+  const id = [...new Uint8Array(idBytes)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+  return { key, id };
+}
+
+async function encryptProgress(code, includeNotes) {
+  const { key, id } = await recoveryCredentials(code);
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const plaintext = new TextEncoder().encode(JSON.stringify(collectProgress(includeNotes)));
+  const encrypted = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, plaintext);
+  return { id, payload: { version: 1, iv: bytesToBase64Url(iv), ciphertext: bytesToBase64Url(new Uint8Array(encrypted)) } };
+}
+
+async function decryptProgress(code, record) {
+  const { key } = await recoveryCredentials(code);
+  const decrypted = await crypto.subtle.decrypt(
+    { name: 'AES-GCM', iv: base64UrlToBytes(record.iv) },
+    key,
+    base64UrlToBytes(record.ciphertext)
+  );
+  return JSON.parse(new TextDecoder().decode(decrypted));
+}
+
+async function withSyncBusy(action) {
+  syncBox.classList.add('busy');
+  try { await action(); }
+  finally { syncBox.classList.remove('busy'); }
+}
+
+recoveryInput.addEventListener('input', () => { recoveryInput.value = formatRecoveryCode(recoveryInput.value); });
+
+progressDialog.querySelector('[data-sync-save]').addEventListener('click', () => withSyncBusy(async () => {
+  try {
+    if (!normalizeRecoveryCode(recoveryInput.value)) recoveryInput.value = generateRecoveryCode();
+    const includeNotes = progressDialog.querySelector('#sync-notes').checked;
+    const { id, payload } = await encryptProgress(recoveryInput.value, includeNotes);
+    const response = await fetch(`/api/progress/${id}`, {
+      method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+    });
+    if (!response.ok) throw new Error('save_failed');
+    showToastMessage('Online-Sicherung gespeichert. Bewahre deinen Code sicher auf.');
+    recoveryInput.select();
+  } catch (error) {
+    showToastMessage(error.message === 'invalid_code' ? 'Der Wiederherstellungscode ist unvollständig.' : 'Die Online-Sicherung konnte nicht gespeichert werden.');
+  }
+}));
+
+progressDialog.querySelector('[data-sync-restore]').addEventListener('click', () => withSyncBusy(async () => {
+  try {
+    const { id } = await recoveryCredentials(recoveryInput.value);
+    const response = await fetch(`/api/progress/${id}`, { headers: { 'Accept': 'application/json' } });
+    if (response.status === 404) throw new Error('not_found');
+    if (!response.ok) throw new Error('restore_failed');
+    const data = await decryptProgress(recoveryInput.value, await response.json());
+    applyProgressData(data);
+    showToastMessage('Dein Stand wurde sicher wiederhergestellt.');
+  } catch (error) {
+    if (error.message === 'invalid_code') showToastMessage('Der Wiederherstellungscode ist unvollständig.');
+    else if (error.message === 'not_found') showToastMessage('Zu diesem Code wurde keine Sicherung gefunden.');
+    else showToastMessage('Der Code passt nicht zu dieser Sicherung. Bitte prüfe ihn.');
+  }
+}));
+
+progressDialog.querySelector('[data-copy-code]').addEventListener('click', async () => {
+  if (!recoveryInput.value) return showToastMessage('Erzeuge zuerst eine Online-Sicherung.');
+  await navigator.clipboard.writeText(recoveryInput.value);
+  showToastMessage('Wiederherstellungscode kopiert.');
 });
 
 progressDialog.querySelector('[data-delete-progress]').addEventListener('click', () => {
