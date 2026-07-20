@@ -337,6 +337,18 @@ progressDialog.querySelector('[data-sync-restore]').addEventListener('click', ()
   }
 }));
 
+progressDialog.querySelector('[data-sync-delete]').addEventListener('click', () => withSyncBusy(async () => {
+  try {
+    if (!window.confirm('Die Online-Sicherung zu diesem Code endgültig löschen? Die Daten auf diesem Gerät bleiben erhalten.')) return;
+    const { id } = await recoveryCredentials(recoveryInput.value);
+    const response = await fetch(`/api/progress/${id}`, { method: 'DELETE' });
+    if (!response.ok) throw new Error('delete_failed');
+    showToastMessage('Die Online-Sicherung wurde gelöscht.');
+  } catch (error) {
+    showToastMessage(error.message === 'invalid_code' ? 'Der Wiederherstellungscode ist unvollständig.' : 'Die Online-Sicherung konnte nicht gelöscht werden.');
+  }
+}));
+
 progressDialog.querySelector('[data-copy-code]').addEventListener('click', async () => {
   if (!recoveryInput.value) return showToastMessage('Erzeuge zuerst eine Online-Sicherung.');
   await navigator.clipboard.writeText(recoveryInput.value);
