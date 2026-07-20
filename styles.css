@@ -30,3 +30,5 @@ body.journey-open{overflow:hidden}.journey{position:fixed;inset:0;background:var
   .reflection{padding:24px;margin-top:48px}
   .reflection h3{font-size:26px;overflow-wrap:anywhere}
 }
+
+body.journey-open > .topbar{visibility:hidden}
