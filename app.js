@@ -39,7 +39,58 @@ const observer = new IntersectionObserver(entries => {
 }, { rootMargin: '-30% 0px -65%' });
 observed.forEach(section => observer.observe(section));
 
-const lessons = [
+const introLessons = [
+  {
+    kicker: 'Etappe 1 · 9 Minuten', title: 'Was meinen wir, wenn wir Gott sagen?',
+    lead: 'Vielleicht ist nicht Gott unglaubwürdig geworden, sondern nur ein bestimmtes Bild von Gott.',
+    body: `<p>„Gott“ ist kein Gegenstand, den man irgendwo im Universum finden könnte. Das Wort bündelt Erfahrungen, Hoffnungen und Deutungen: ein Gegenüber, der Grund allen Seins, die Macht der Liebe, eine tragende Wirklichkeit oder ein Geheimnis, das sich unseren Begriffen entzieht.</p><p>Diese Bilder widersprechen einander teilweise. Keines kann Gott vollständig festlegen. Auch die Bibel spricht vielstimmig: Gott erscheint als Schöpfer, Mutter, Vater, Feuer, Atem, Schutz und fremde Gegenwart.</p><blockquote>Vielleicht beginnt Glaube nicht mit einer Definition, sondern mit der Frage: Worauf vertraue ich im Innersten?</blockquote><div class="context-box"><strong>Offen bleiben</strong>Du musst heute kein Gottesbild auswählen. Es genügt wahrzunehmen, welche Bilder dich anziehen, abstoßen oder ratlos machen.</div>`,
+    question: 'Welches Gottesbild hast du übernommen – und welches würdest du gern loslassen?'
+  },
+  {
+    kicker: 'Etappe 2 · 8 Minuten', title: 'Glauben ist mehr als Für-wahr-Halten',
+    lead: 'Im Alltag bedeutet „glauben“ oft: etwas nicht genau wissen. Religiöser Glaube kann mehr bedeuten als eine unsichere Behauptung.',
+    body: `<p>Christlicher Glaube enthält Überzeugungen. Aber er erschöpft sich nicht darin, Sätze über Gott für korrekt zu halten. Das biblische Wortfeld verbindet Glauben mit Vertrauen, Treue und einem Sich-Verlassen.</p><p>Vertrauen ist kein Gegenbegriff zum Denken. Es wächst aus Erfahrung, bleibt aber verletzlich. Wer glaubt, besitzt Gott nicht. Glaube kann deshalb Gewissheit und Unsicherheit, Nähe und Schweigen enthalten.</p><h3>Eine Lebenshaltung</h3><p>Die entscheidende Frage könnte weniger lauten: „Kann ich alles unterschreiben?“ – und mehr: „Welcher Hoffnung gebe ich in meinem Leben Raum?“</p>`,
+    question: 'Wo vertraust du bereits, ohne vollständige Sicherheit zu haben?'
+  },
+  {
+    kicker: 'Etappe 3 · 11 Minuten', title: 'Jesus: Geschichte und Deutung',
+    lead: 'Jesus von Nazaret war ein jüdischer Mensch seiner Zeit – und wurde für Christ:innen zum entscheidenden Bild Gottes.',
+    body: `<p>Historisch lässt sich Jesus im Judentum des ersten Jahrhunderts verorten. Er verkündete Gottes Reich, erzählte Gleichnisse, heilte, sammelte Menschen und geriet unter römischer Herrschaft ans Kreuz. Unsere Quellen sind Glaubenszeugnisse, keine neutralen Reportagen.</p><p>Nach seinem Tod deuteten seine Anhänger:innen ihre Erfahrungen als Begegnung mit dem Auferstandenen. Daraus entstanden unterschiedliche Antworten auf die Frage, wer Jesus ist: Prophet, Messias, Sohn Gottes, Befreier, menschgewordenes Wort.</p><blockquote>Historische Forschung und persönlicher Glaube beantworten nicht dieselbe Frage – aber sie müssen einander auch nicht fürchten.</blockquote><div class="context-box"><strong>Jüdischer Jesus</strong>Jesus war kein Christ. Eine verantwortliche christliche Deutung achtet seine jüdische Identität und macht das Judentum nicht zur überholten Vorstufe.</div>`,
+    question: 'Was an Jesus interessiert, irritiert oder berührt dich?'
+  },
+  {
+    kicker: 'Etappe 4 · 9 Minuten', title: 'Warum die Bibel bedeutsam sein kann',
+    lead: 'Die Bibel muss kein fehlerloses Diktat sein, um zu einer Quelle des Glaubens zu werden.',
+    body: `<p>In ihren Texten haben Menschen Erfahrungen mit Gott, Gewalt, Befreiung, Liebe, Scheitern und Hoffnung bewahrt. Sie entstanden über Jahrhunderte und tragen die Grenzen ihrer jeweiligen Zeit.</p><p>Christ:innen lesen die Bibel in der Erwartung, dass in menschlichen Worten etwas von Gottes Anrede hörbar werden kann. Diese Erwartung ersetzt keine Kritik. Gerade weil Texte Wirkung entfalten, müssen ihre Entstehung und ihre Folgen geprüft werden.</p><div class="context-box"><strong>Vier Fragen</strong>Was steht da? · Woher kommt der Text? · Was hat er bewirkt? · Welche verantwortliche Bedeutung kann er heute gewinnen?</div><p>Der vertiefende Weg „Die Bibel lesen, ohne sie wörtlich zu nehmen“ führt diese Fragen später weiter.</p>`,
+    question: 'Was müsste geschehen, damit du einem biblischen Text neugierig begegnen könntest?'
+  },
+  {
+    kicker: 'Etappe 5 · 8 Minuten', title: 'Beten ohne falsche Gewissheit',
+    lead: 'Beten kann auch dann beginnen, wenn du nicht weißt, ob jemand zuhört.',
+    body: `<p>Menschen beten bittend, dankend, klagend und schweigend. Manche erleben ein Gegenüber. Andere finden im Gebet Worte für das, was sie selbst kaum verstehen. Beides muss nicht gegeneinander ausgespielt werden.</p><p>Gebet ist keine Technik, mit der sich Gott oder die Welt kontrollieren lässt. Unerfüllte Bitten sind kein Beweis für zu wenig Glauben. In den Psalmen gehören Protest, Zweifel und Anklage ausdrücklich zum Beten.</p><blockquote>Ein ehrlicher Satz kann ein Gebet sein: „Gott, wenn es dich gibt – hier bin ich.“</blockquote><div class="context-box"><strong>Kleine Praxis</strong>Atme dreimal ruhig. Benenne einen Dank, eine Sorge und eine Hoffnung. Du musst dabei nichts Besonderes fühlen.</div>`,
+    question: 'Welche Form des Betens könnte sich für dich ehrlich anfühlen?'
+  },
+  {
+    kicker: 'Etappe 6 · 12 Minuten', title: 'Leid lässt sich nicht wegerklären',
+    lead: 'Keine religiöse Antwort macht erlittenes Leid im Nachhinein sinnvoll oder notwendig.',
+    body: `<p>Die Frage, wie ein guter und mächtiger Gott Leid zulassen kann, gehört zu den härtesten Fragen des Glaubens. Christliche Traditionen haben verschieden geantwortet: mit menschlicher Freiheit, der Begrenztheit der Schöpfung, Gottes verborgenem Handeln oder der Hoffnung auf endgültige Gerechtigkeit.</p><p>Keine dieser Antworten erklärt jedes Leid. Manche frommen Sätze verletzen zusätzlich – etwa wenn Krankheit als Strafe, Prüfung oder geheimer Plan gedeutet wird.</p><h3>Gott im Leiden?</h3><p>Die Kreuzeserzählung behauptet nicht, Schmerz sei gut. Sie wurde zur Hoffnung, dass Gott Leid nicht aus sicherer Entfernung betrachtet. Glaube kann hier weniger Erklärung als Klage, Mitgefühl und Widerstand bedeuten.</p><div class="context-box"><strong>Eine Grenze</strong>Akutes psychisches oder körperliches Leid braucht konkrete Hilfe. Spirituelle Begleitung ersetzt keine medizinische oder therapeutische Unterstützung.</div>`,
+    question: 'Welche Antwort auf Leid möchtest du nicht mehr hören müssen?'
+  },
+  {
+    kicker: 'Etappe 7 · 9 Minuten', title: 'Braucht Glaube Gemeinschaft?',
+    lead: 'Glaube ist persönlich, aber selten nur privat. Gemeinschaft kann tragen – und sie kann verletzen.',
+    body: `<p>Kirchen bewahren Texte, Musik, Rituale und soziale Praxis über Generationen. In Gemeinden können Menschen gemeinsam feiern, zweifeln, handeln und füreinander einstehen. Institutionen besitzen zugleich Macht und haben diese Macht vielfach missbraucht.</p><p>Darum ist Zugehörigkeit kein Selbstzweck. Eine gute Gemeinschaft respektiert Grenzen, hält Kritik aus und macht deinen Wert nicht von Anpassung abhängig. Du darfst Gemeinden kennenlernen, ohne sofort Mitglied zu werden.</p><blockquote>Eine Gemeinde ist nicht die Türhüterin Gottes. Sie kann aber ein Ort werden, an dem Glaube Gestalt gewinnt.</blockquote><div class="context-box"><strong>Du entscheidest</strong>Ein Gespräch verpflichtet zu nichts. Du darfst nach Haltung, theologischer Ausrichtung und Schutzkonzepten fragen – und wieder gehen.</div>`,
+    question: 'Was müsste eine christliche Gemeinschaft bieten, damit du dich sicher und frei fühlst?'
+  },
+  {
+    kicker: 'Etappe 8 · 10 Minuten', title: 'Ein vorläufiger Glaube',
+    lead: 'Du brauchst kein fertiges Bekenntnis. Ein ehrlicher Zwischenstand kann genug sein, um weiterzugehen.',
+    body: `<p>Vielleicht hast du Zustimmung gefunden, vielleicht neue Fragen. Beides ist ein Ergebnis. Glaube verändert sich mit Erfahrungen, Beziehungen und Wissen. Vorläufigkeit ist nicht Beliebigkeit: Du kannst dich orientieren und zugleich lernfähig bleiben.</p><p>Formuliere, wenn du möchtest, drei Sätze:</p><div class="context-box"><strong>Mein Zwischenstand</strong>Ich hoffe …<br>Ich zweifle …<br>Ich möchte ausprobieren …</div><p>Du kannst diesen Weg wiederholen, den Bibelweg vertiefen oder ein Gespräch mit einem Menschen suchen. Keine dieser Möglichkeiten beweist mehr Glauben als die andere.</p><blockquote>Weiter glauben kann heißen: weiterzumachen. Es kann auch heißen: weiter, offener und mit mehr Raum zu glauben.</blockquote>`,
+    question: 'Wie lautet dein persönlicher, vorläufiger nächster Satz?'
+  }
+];
+
+const bibleLessons = [
   {
     kicker: 'Etappe 1 · 8 Minuten', title: 'Eine Bibliothek, kein Diktat',
     lead: 'Die Bibel ist kein Buch aus einem Guss. Sie ist eine vielstimmige Bibliothek, entstanden über viele Jahrhunderte.',
@@ -84,40 +135,76 @@ const lessons = [
   }
 ];
 
+const pathDefinitions = {
+  intro: { id: 'intro', number: 'Weg 01', title: 'Kann ich glauben – und wenn ja, wie?', lessons: introLessons },
+  bible: { id: 'bible', number: 'Weg 02', title: 'Die Bibel lesen, ohne sie wörtlich zu nehmen', lessons: bibleLessons }
+};
 const journey = document.querySelector('#journey');
 const lessonNav = journey.querySelector('.lesson-nav');
-let currentLesson = Number(localStorage.getItem('weite-current-lesson') || 0);
-let completedLessons = new Set(JSON.parse(localStorage.getItem('weite-completed-lessons') || '[]'));
+let activePath = pathDefinitions.intro;
+let currentLesson = 0;
+let completedLessons = new Set();
 
-lessons.forEach((lesson, index) => {
-  const button = document.createElement('button');
-  button.type = 'button';
-  button.textContent = `${index + 1}. ${lesson.title}`;
-  button.addEventListener('click', () => renderLesson(index));
-  lessonNav.append(button);
-});
+function storageKey(pathId, kind) { return `weiter-glauben-${pathId}-${kind}`; }
+function reflectionKey(pathId, index) { return `weiter-glauben-${pathId}-reflection-${index}`; }
 
-function saveReflection() {
-  const note = journey.querySelector('#reflection-note').value;
-  localStorage.setItem(`weite-reflection-${currentLesson}`, note);
+function migrateLegacyBibleProgress() {
+  if (localStorage.getItem(storageKey('bible', 'completed')) !== null) return;
+  const legacyCompleted = localStorage.getItem('weite-completed-lessons');
+  const legacyCurrent = localStorage.getItem('weite-current-lesson');
+  if (legacyCompleted !== null) localStorage.setItem(storageKey('bible', 'completed'), legacyCompleted);
+  if (legacyCurrent !== null) localStorage.setItem(storageKey('bible', 'current'), legacyCurrent);
+  bibleLessons.forEach((_, index) => {
+    const note = localStorage.getItem(`weite-reflection-${index}`);
+    if (note !== null) localStorage.setItem(reflectionKey('bible', index), note);
+  });
+}
+migrateLegacyBibleProgress();
+
+function loadPathState(path) {
+  currentLesson = Number(localStorage.getItem(storageKey(path.id, 'current')) || 0);
+  try { completedLessons = new Set(JSON.parse(localStorage.getItem(storageKey(path.id, 'completed')) || '[]')); }
+  catch { completedLessons = new Set(); }
 }
 
-function renderLesson(index) {
-  saveReflection();
-  currentLesson = Math.max(0, Math.min(index, lessons.length - 1));
-  localStorage.setItem('weite-current-lesson', currentLesson);
-  const lesson = lessons[currentLesson];
-  journey.querySelector('.journey-count').textContent = `${currentLesson + 1} / ${lessons.length}`;
-  journey.querySelector('.journey-progress span').style.width = `${((currentLesson + 1) / lessons.length) * 100}%`;
+function savePathState() {
+  localStorage.setItem(storageKey(activePath.id, 'current'), currentLesson);
+  localStorage.setItem(storageKey(activePath.id, 'completed'), JSON.stringify([...completedLessons]));
+}
+
+function buildLessonNav() {
+  lessonNav.replaceChildren();
+  activePath.lessons.forEach((lesson, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = `${index + 1}. ${lesson.title}`;
+    button.addEventListener('click', () => renderLesson(index));
+    lessonNav.append(button);
+  });
+}
+
+function saveReflection() {
+  if (!journey.classList.contains('open')) return;
+  const note = journey.querySelector('#reflection-note').value;
+  localStorage.setItem(reflectionKey(activePath.id, currentLesson), note);
+}
+
+function renderLesson(index, saveCurrent = true) {
+  if (saveCurrent) saveReflection();
+  currentLesson = Math.max(0, Math.min(index, activePath.lessons.length - 1));
+  savePathState();
+  const lesson = activePath.lessons[currentLesson];
+  journey.querySelector('.journey-count').textContent = `${currentLesson + 1} / ${activePath.lessons.length}`;
+  journey.querySelector('.journey-progress span').style.width = `${((currentLesson + 1) / activePath.lessons.length) * 100}%`;
   journey.querySelector('.lesson-number').textContent = String(currentLesson + 1).padStart(2, '0');
   journey.querySelector('.lesson-kicker').textContent = lesson.kicker;
   journey.querySelector('.lesson-title').textContent = lesson.title;
   journey.querySelector('.lesson-lead').textContent = lesson.lead;
   journey.querySelector('.lesson-body').innerHTML = lesson.body;
   journey.querySelector('.reflection-question').textContent = lesson.question;
-  journey.querySelector('#reflection-note').value = localStorage.getItem(`weite-reflection-${currentLesson}`) || '';
+  journey.querySelector('#reflection-note').value = localStorage.getItem(reflectionKey(activePath.id, currentLesson)) || '';
   journey.querySelector('.lesson-back').disabled = currentLesson === 0;
-  journey.querySelector('.lesson-next').innerHTML = currentLesson === lessons.length - 1 ? 'Weg abschließen <span>✓</span>' : 'Nächste Etappe <span>→</span>';
+  journey.querySelector('.lesson-next').innerHTML = currentLesson === activePath.lessons.length - 1 ? 'Weg abschließen <span>✓</span>' : 'Nächste Etappe <span>→</span>';
   [...lessonNav.children].forEach((button, buttonIndex) => {
     button.classList.toggle('active', buttonIndex === currentLesson);
     button.classList.toggle('done', completedLessons.has(buttonIndex));
@@ -125,11 +212,17 @@ function renderLesson(index) {
   journey.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function openJourney() {
+function openJourney(pathId) {
+  activePath = pathDefinitions[pathId];
+  if (!activePath) return;
+  loadPathState(activePath);
+  journey.querySelector('.journey-aside .eyebrow').textContent = activePath.number;
+  journey.querySelector('.journey-aside h2').textContent = activePath.title;
+  buildLessonNav();
   journey.classList.add('open');
   journey.setAttribute('aria-hidden', 'false');
   document.body.classList.add('journey-open');
-  renderLesson(currentLesson);
+  renderLesson(currentLesson, false);
 }
 
 function closeJourney() {
@@ -139,13 +232,13 @@ function closeJourney() {
   document.body.classList.remove('journey-open');
 }
 
-document.querySelector('[data-start-path]').addEventListener('click', openJourney);
+document.querySelectorAll('[data-start-path]').forEach(button => button.addEventListener('click', () => openJourney(button.dataset.startPath)));
 journey.querySelector('.journey-close').addEventListener('click', closeJourney);
 journey.querySelector('.lesson-back').addEventListener('click', () => renderLesson(currentLesson - 1));
 journey.querySelector('.lesson-next').addEventListener('click', () => {
   completedLessons.add(currentLesson);
-  localStorage.setItem('weite-completed-lessons', JSON.stringify([...completedLessons]));
-  if (currentLesson < lessons.length - 1) renderLesson(currentLesson + 1);
+  savePathState();
+  if (currentLesson < activePath.lessons.length - 1) renderLesson(currentLesson + 1);
   else {
     showToastMessage('Weg abgeschlossen. Du kannst jederzeit zurückkehren.');
     closeJourney();
@@ -161,8 +254,20 @@ function showToastMessage(message) {
 const progressDialog = document.querySelector('#progress-dialog');
 const progressClose = progressDialog.querySelector('.dialog-close');
 
+function pathProgress(path) {
+  let completed = [];
+  try { completed = JSON.parse(localStorage.getItem(storageKey(path.id, 'completed')) || '[]'); } catch {}
+  return {
+    currentLesson: Number(localStorage.getItem(storageKey(path.id, 'current')) || 0),
+    completedLessons: completed.filter(index => Number.isInteger(index) && index >= 0 && index < path.lessons.length)
+  };
+}
+
 function updateProgressSummary() {
-  progressDialog.querySelector('[data-completed-count]').textContent = completedLessons.size;
+  const completed = Object.values(pathDefinitions).reduce((sum, path) => sum + new Set(pathProgress(path).completedLessons).size, 0);
+  const total = Object.values(pathDefinitions).reduce((sum, path) => sum + path.lessons.length, 0);
+  progressDialog.querySelector('[data-completed-count]').textContent = completed;
+  progressDialog.querySelector('[data-total-count]').textContent = total;
 }
 
 document.querySelector('[data-open-progress]').addEventListener('click', () => {
@@ -172,17 +277,12 @@ document.querySelector('[data-open-progress]').addEventListener('click', () => {
 progressClose.addEventListener('click', () => progressDialog.close());
 
 function collectProgress(includeNotes) {
-  const data = {
-    format: 'weiter-glauben-progress',
-    version: 1,
-    exportedAt: new Date().toISOString(),
-    currentLesson,
-    completedLessons: [...completedLessons]
-  };
-  if (includeNotes) {
-    data.reflections = lessons.map((_, index) => localStorage.getItem(`weite-reflection-${index}`) || '');
-  }
-  return data;
+  const paths = {};
+  Object.values(pathDefinitions).forEach(path => {
+    paths[path.id] = pathProgress(path);
+    if (includeNotes) paths[path.id].reflections = path.lessons.map((_, index) => localStorage.getItem(reflectionKey(path.id, index)) || '');
+  });
+  return { format: 'weiter-glauben-progress', version: 2, exportedAt: new Date().toISOString(), paths };
 }
 
 progressDialog.querySelector('[data-export]').addEventListener('click', () => {
@@ -193,22 +293,28 @@ progressDialog.querySelector('[data-export]').addEventListener('click', () => {
   link.href = url;
   link.download = `weiter-glauben-stand-${new Date().toISOString().slice(0, 10)}.json`;
   link.click();
-  URL.revokeObjectURL(url);
+  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
   showToastMessage(includeNotes ? 'Stand und Notizen wurden gesichert.' : 'Dein Stand wurde gesichert.');
 });
 
+function applyPathData(path, data) {
+  if (!data || !Array.isArray(data.completedLessons) || !data.completedLessons.every(index => Number.isInteger(index) && index >= 0 && index < path.lessons.length)) throw new Error('invalid');
+  const current = Number.isInteger(data.currentLesson) ? Math.max(0, Math.min(data.currentLesson, path.lessons.length - 1)) : 0;
+  localStorage.setItem(storageKey(path.id, 'current'), current);
+  localStorage.setItem(storageKey(path.id, 'completed'), JSON.stringify([...new Set(data.completedLessons)]));
+  if (Array.isArray(data.reflections)) data.reflections.slice(0, path.lessons.length).forEach((note, index) => {
+    if (typeof note === 'string') localStorage.setItem(reflectionKey(path.id, index), note);
+  });
+}
+
 function applyProgressData(data) {
-  const validLessons = Array.isArray(data.completedLessons) && data.completedLessons.every(index => Number.isInteger(index) && index >= 0 && index < lessons.length);
-  if (data.format !== 'weiter-glauben-progress' || data.version !== 1 || !validLessons) throw new Error('invalid');
-  currentLesson = Number.isInteger(data.currentLesson) ? Math.max(0, Math.min(data.currentLesson, lessons.length - 1)) : 0;
-  completedLessons = new Set(data.completedLessons);
-  localStorage.setItem('weite-current-lesson', currentLesson);
-  localStorage.setItem('weite-completed-lessons', JSON.stringify([...completedLessons]));
-  if (Array.isArray(data.reflections)) {
-    data.reflections.slice(0, lessons.length).forEach((note, index) => {
-      if (typeof note === 'string') localStorage.setItem(`weite-reflection-${index}`, note);
-    });
-  }
+  if (data.format !== 'weiter-glauben-progress') throw new Error('invalid');
+  if (data.version === 1) {
+    applyPathData(pathDefinitions.bible, data);
+  } else if (data.version === 2 && data.paths) {
+    Object.values(pathDefinitions).forEach(path => { if (data.paths[path.id]) applyPathData(path, data.paths[path.id]); });
+  } else throw new Error('invalid');
+  loadPathState(activePath);
   updateProgressSummary();
 }
 
@@ -216,8 +322,8 @@ document.querySelector('#import-progress').addEventListener('change', async even
   const file = event.target.files[0];
   if (!file) return;
   try {
-    const data = JSON.parse(await file.text());
-    applyProgressData(data);
+    if (file.size > 1024 * 1024) throw new Error('too_large');
+    applyProgressData(JSON.parse(await file.text()));
     showToastMessage('Dein gespeicherter Stand wurde wiederhergestellt.');
   } catch {
     showToastMessage('Diese Datei ist keine gültige WEITER-GLAUBEN-Sicherung.');
@@ -357,14 +463,20 @@ progressDialog.querySelector('[data-copy-code]').addEventListener('click', async
 
 progressDialog.querySelector('[data-delete-progress]').addEventListener('click', () => {
   if (!window.confirm('Wirklich Fortschritt und alle persönlichen Notizen auf diesem Gerät löschen?')) return;
+  Object.values(pathDefinitions).forEach(path => {
+    localStorage.removeItem(storageKey(path.id, 'current'));
+    localStorage.removeItem(storageKey(path.id, 'completed'));
+    path.lessons.forEach((_, index) => localStorage.removeItem(reflectionKey(path.id, index)));
+  });
   localStorage.removeItem('weite-current-lesson');
   localStorage.removeItem('weite-completed-lessons');
-  lessons.forEach((_, index) => localStorage.removeItem(`weite-reflection-${index}`));
-  currentLesson = 0;
-  completedLessons = new Set();
+  bibleLessons.forEach((_, index) => localStorage.removeItem(`weite-reflection-${index}`));
+  loadPathState(activePath);
   updateProgressSummary();
   showToastMessage('Deine lokal gespeicherten Daten wurden gelöscht.');
 });
+
+document.querySelectorAll('[data-coming-soon]').forEach(button => button.addEventListener('click', () => showToastMessage('Dieser Weg ist in Vorbereitung.')));
 
 const dateLabel = document.querySelector('.hero .eyebrow');
 dateLabel.textContent = new Intl.DateTimeFormat('de-DE', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date());

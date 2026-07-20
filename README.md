@@ -10,6 +10,7 @@ Zum Starten `index.html` direkt im Browser öffnen oder im Ordner einen lokalen 
 - exemplarischer Tagesimpuls mit drei Perspektiven
 - drei thematische Entdeckungswege
 - vollständig ausgearbeiteter 7-teiliger Weg „Die Bibel lesen, ohne sie wörtlich zu nehmen“
+- vollständig ausgearbeiteter 8-teiliger Einstiegsweg „Kann ich glauben – und wenn ja, wie?“
 - lokal gespeicherter Lernfortschritt und persönliche Reflexionsnotizen
 - Export und Import des Lernstands; persönliche Notizen nur nach aktiver Auswahl
 - anonyme geräteübergreifende Sicherung mit clientseitiger AES-GCM-Verschlüsselung und Wiederherstellungscode
