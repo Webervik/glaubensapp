@@ -18,8 +18,9 @@
       <a class="active" href="#start">Heute</a>
       <a href="#wege">Wege</a>
       <a href="#fragen">Fragen</a>
+      <a href="#kontakt">Kontakt</a>
     </nav>
-    <button class="profile" aria-label="Profil öffnen">VW</button>
+    <button class="profile" aria-label="Gespeicherten Stand verwalten" data-open-progress>Stand</button>
   </header>
 
   <main>
@@ -106,6 +107,25 @@
       </form>
     </section>
 
+    <section class="connection section" id="kontakt">
+      <div class="connection-intro">
+        <p class="eyebrow">Nicht allein weitergehen</p>
+        <h2>Manche Fragen brauchen<br><em>ein echtes Gegenüber.</em></h2>
+        <p>Evangelische Gemeinden und kirchliche Ansprechpersonen sind auch für dich da, wenn du nicht Mitglied bist, wenig glaubst oder schlechte Erfahrungen mit Kirche gemacht hast.</p>
+      </div>
+      <div class="connection-card">
+        <span class="connection-symbol" aria-hidden="true">↗</span>
+        <p class="eyebrow">Ein möglicher nächster Schritt</p>
+        <h3>Eine Gemeinde in deiner Nähe finden</h3>
+        <p>Die offizielle Gemeindesuche zeigt dir anhand deiner Adresse eine evangelische Gemeinde und ihre Kontaktdaten. Deine Adresse gibst du erst auf der Seite der Kirche ein – WEITER GLAUBEN erhält sie nicht.</p>
+        <a class="button primary" href="https://www.ekbo.de/deine-landeskirche/kirchengemeinden/ekd-gemeindesuche" target="_blank" rel="noopener">Gemeinde finden <span>→</span></a>
+        <details>
+          <summary>Was du vor einem Gespräch wissen darfst</summary>
+          <ul><li>Ein erstes Gespräch verpflichtet zu nichts.</li><li>Du darfst nach theologischer Ausrichtung und Haltung fragen.</li><li>Du entscheidest, was du erzählen möchtest.</li><li>Wenn eine Gemeinde nicht passt, sagt das nichts über deinen Glauben.</li></ul>
+        </details>
+      </div>
+    </section>
+
     <section class="principles section">
       <p class="eyebrow">Was du von WEITER GLAUBEN erwarten kannst</p>
       <div class="principle-grid">
@@ -124,6 +144,20 @@
     <p class="eyebrow">Deine Frage</p><h2>Was beschäftigt dich?</h2>
     <p>Hier darf eine Frage unfertig sein. Wir zeigen dir anschließend Hintergründe, verschiedene Sichtweisen und mögliche nächste Schritte.</p>
     <form method="dialog"><textarea rows="4" placeholder="Schreib einfach, wie du es sagen würdest …"></textarea><button class="button primary" value="submit">Frage erkunden <span>→</span></button></form>
+  </dialog>
+  <dialog id="progress-dialog" class="progress-dialog">
+    <button class="dialog-close" aria-label="Schließen">×</button>
+    <p class="eyebrow">Dein Stand</p><h2>Hier weitergehen, wo du warst.</h2>
+    <p class="storage-status">Fortschritt und Gedanken werden automatisch nur in diesem Browser gespeichert.</p>
+    <div class="progress-summary"><strong><span data-completed-count>0</span> von 7</strong><span>Etappen abgeschlossen</span></div>
+    <div class="data-box">
+      <h3>Stand auf ein anderes Gerät mitnehmen</h3>
+      <p>Lade eine Sicherungsdatei herunter und öffne sie später hier oder auf einem anderen Gerät.</p>
+      <label class="check-row"><input type="checkbox" id="include-notes"> Persönliche Notizen in die Datei aufnehmen</label>
+      <div class="data-actions"><button class="button primary" type="button" data-export>Stand sichern</button><label class="button quiet import-button">Stand wiederherstellen<input type="file" id="import-progress" accept="application/json,.json"></label></div>
+      <p class="privacy-note">Die Datei wird auf deinem Gerät erstellt und nicht an WEITER GLAUBEN gesendet. Bewahre sie geschützt auf, besonders wenn sie persönliche Notizen enthält.</p>
+    </div>
+    <button class="danger-link" type="button" data-delete-progress>Alle gespeicherten Daten auf diesem Gerät löschen</button>
   </dialog>
   <section class="journey" id="journey" aria-hidden="true">
     <header class="journey-topbar">

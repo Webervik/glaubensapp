@@ -157,3 +157,81 @@ function showToastMessage(message) {
   toast.textContent = message;
   showToast();
 }
+
+const progressDialog = document.querySelector('#progress-dialog');
+const progressClose = progressDialog.querySelector('.dialog-close');
+
+function updateProgressSummary() {
+  progressDialog.querySelector('[data-completed-count]').textContent = completedLessons.size;
+}
+
+document.querySelector('[data-open-progress]').addEventListener('click', () => {
+  updateProgressSummary();
+  progressDialog.showModal();
+});
+progressClose.addEventListener('click', () => progressDialog.close());
+
+function collectProgress(includeNotes) {
+  const data = {
+    format: 'weiter-glauben-progress',
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    currentLesson,
+    completedLessons: [...completedLessons]
+  };
+  if (includeNotes) {
+    data.reflections = lessons.map((_, index) => localStorage.getItem(`weite-reflection-${index}`) || '');
+  }
+  return data;
+}
+
+progressDialog.querySelector('[data-export]').addEventListener('click', () => {
+  const includeNotes = progressDialog.querySelector('#include-notes').checked;
+  const blob = new Blob([JSON.stringify(collectProgress(includeNotes), null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `weiter-glauben-stand-${new Date().toISOString().slice(0, 10)}.json`;
+  link.click();
+  URL.revokeObjectURL(url);
+  showToastMessage(includeNotes ? 'Stand und Notizen wurden gesichert.' : 'Dein Stand wurde gesichert.');
+});
+
+document.querySelector('#import-progress').addEventListener('change', async event => {
+  const file = event.target.files[0];
+  if (!file) return;
+  try {
+    const data = JSON.parse(await file.text());
+    const validLessons = Array.isArray(data.completedLessons) && data.completedLessons.every(index => Number.isInteger(index) && index >= 0 && index < lessons.length);
+    if (data.format !== 'weiter-glauben-progress' || data.version !== 1 || !validLessons) throw new Error('invalid');
+    currentLesson = Number.isInteger(data.currentLesson) ? Math.max(0, Math.min(data.currentLesson, lessons.length - 1)) : 0;
+    completedLessons = new Set(data.completedLessons);
+    localStorage.setItem('weite-current-lesson', currentLesson);
+    localStorage.setItem('weite-completed-lessons', JSON.stringify([...completedLessons]));
+    if (Array.isArray(data.reflections)) {
+      data.reflections.slice(0, lessons.length).forEach((note, index) => {
+        if (typeof note === 'string') localStorage.setItem(`weite-reflection-${index}`, note);
+      });
+    }
+    updateProgressSummary();
+    showToastMessage('Dein gespeicherter Stand wurde wiederhergestellt.');
+  } catch {
+    showToastMessage('Diese Datei ist keine gültige WEITER-GLAUBEN-Sicherung.');
+  } finally {
+    event.target.value = '';
+  }
+});
+
+progressDialog.querySelector('[data-delete-progress]').addEventListener('click', () => {
+  if (!window.confirm('Wirklich Fortschritt und alle persönlichen Notizen auf diesem Gerät löschen?')) return;
+  localStorage.removeItem('weite-current-lesson');
+  localStorage.removeItem('weite-completed-lessons');
+  lessons.forEach((_, index) => localStorage.removeItem(`weite-reflection-${index}`));
+  currentLesson = 0;
+  completedLessons = new Set();
+  updateProgressSummary();
+  showToastMessage('Deine lokal gespeicherten Daten wurden gelöscht.');
+});
+
+const dateLabel = document.querySelector('.hero .eyebrow');
+dateLabel.textContent = new Intl.DateTimeFormat('de-DE', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date());

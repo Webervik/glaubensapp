@@ -11,6 +11,8 @@ Zum Starten `index.html` direkt im Browser öffnen oder im Ordner einen lokalen 
 - drei thematische Entdeckungswege
 - vollständig ausgearbeiteter 7-teiliger Weg „Die Bibel lesen, ohne sie wörtlich zu nehmen“
 - lokal gespeicherter Lernfortschritt und persönliche Reflexionsnotizen
+- Export und Import des Lernstands; persönliche Notizen nur nach aktiver Auswahl
+- behutsame Einladung zur offiziellen landeskirchlichen Gemeindesuche
 - Eingabe für persönliche Glaubensfragen
 - responsive Darstellung für Smartphone und Desktop
 
