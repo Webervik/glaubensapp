@@ -14,3 +14,19 @@ body.journey-open{overflow:hidden}.journey{position:fixed;inset:0;background:var
 @media(max-width:850px){.connection{grid-template-columns:1fr}.connection-card{max-width:650px}.topbar nav{display:none}}
 @media(max-width:520px){.connection{padding:72px 22px}.connection-intro h2{font-size:44px}.data-actions{flex-direction:column}.data-actions .button{width:100%}.progress-summary{align-items:flex-start;flex-direction:column;gap:5px}}
 .sync-box{margin-top:18px}.sync-box .eyebrow{margin-bottom:8px}.code-label{display:block;font-size:11px;font-weight:750;margin:20px 0 6px}.code-row{display:flex;border:1px solid var(--line);background:var(--cream);margin-bottom:14px}.code-row input{min-width:0;flex:1;border:0;background:transparent;padding:13px;font:14px/1.3 ui-monospace,SFMono-Regular,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em;outline:none}.copy-code{border:0;border-left:1px solid var(--line);background:transparent;padding:0 13px;cursor:pointer;font-size:11px;font-weight:750}.sync-box.busy{opacity:.65;pointer-events:none}
+
+@media(max-width:800px){
+  .journey{overflow-x:hidden}
+  .journey-layout{display:block;width:100%;min-width:0}
+  .journey-aside{width:100%;min-width:0;overflow:hidden}
+  .journey-aside h2{overflow-wrap:anywhere}
+  .lesson-nav{width:100%;max-width:100%;min-width:0;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;padding-bottom:4px}
+  .lesson-nav button{flex:0 0 min(270px,78vw);white-space:normal;line-height:1.3}
+  .lesson{width:100%;max-width:none;min-width:0;overflow:hidden;padding:48px 22px 72px}
+  .lesson-title,.lesson-lead,.lesson-body{max-width:100%;overflow-wrap:anywhere}
+  .lesson-title{font-size:clamp(38px,11vw,46px);hyphens:auto}
+  .lesson-body blockquote{font-size:22px;margin:32px 0;padding-left:18px}
+  .lesson-body .context-box{margin:30px 0;padding:20px}
+  .reflection{padding:24px;margin-top:48px}
+  .reflection h3{font-size:26px;overflow-wrap:anywhere}
+}
