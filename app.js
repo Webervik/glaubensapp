@@ -141,6 +141,7 @@ const pathDefinitions = {
 };
 const journey = document.querySelector('#journey');
 const lessonNav = journey.querySelector('.lesson-nav');
+const lessonSelect = journey.querySelector('#lesson-select');
 let activePath = pathDefinitions.intro;
 let currentLesson = 0;
 let completedLessons = new Set();
@@ -174,12 +175,17 @@ function savePathState() {
 
 function buildLessonNav() {
   lessonNav.replaceChildren();
+  lessonSelect.replaceChildren();
   activePath.lessons.forEach((lesson, index) => {
     const button = document.createElement('button');
     button.type = 'button';
     button.textContent = `${index + 1}. ${lesson.title}`;
     button.addEventListener('click', () => renderLesson(index));
     lessonNav.append(button);
+    const option = document.createElement('option');
+    option.value = index;
+    option.textContent = `${index + 1} von ${activePath.lessons.length} · ${lesson.title}`;
+    lessonSelect.append(option);
   });
 }
 
@@ -205,6 +211,7 @@ function renderLesson(index, saveCurrent = true) {
   journey.querySelector('#reflection-note').value = localStorage.getItem(reflectionKey(activePath.id, currentLesson)) || '';
   journey.querySelector('.lesson-back').disabled = currentLesson === 0;
   journey.querySelector('.lesson-next').innerHTML = currentLesson === activePath.lessons.length - 1 ? 'Weg abschließen <span>✓</span>' : 'Nächste Etappe <span>→</span>';
+  lessonSelect.value = String(currentLesson);
   [...lessonNav.children].forEach((button, buttonIndex) => {
     button.classList.toggle('active', buttonIndex === currentLesson);
     button.classList.toggle('done', completedLessons.has(buttonIndex));
@@ -245,6 +252,7 @@ journey.querySelector('.lesson-next').addEventListener('click', () => {
   }
 });
 journey.querySelector('#reflection-note').addEventListener('input', saveReflection);
+lessonSelect.addEventListener('change', () => renderLesson(Number(lessonSelect.value)));
 
 function showToastMessage(message) {
   toast.textContent = message;
