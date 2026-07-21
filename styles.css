@@ -34,9 +34,19 @@ body.journey-open{overflow:hidden}.journey{position:fixed;inset:0;background:var
 body.journey-open > .topbar{visibility:hidden}
 
 .lesson-picker{display:none}
+.arrival,.scripture{margin:0 0 30px;padding:22px 24px;border-left:3px solid var(--blue);background:rgba(157,199,198,.16)}
+.arrival>strong,.scripture>strong{display:block;text-transform:uppercase;letter-spacing:.12em;font-size:10px;margin-bottom:9px}
+.arrival p,.scripture p{margin-bottom:0}.scripture{border-left-color:var(--coral);background:rgba(239,154,126,.10)}
+.scripture blockquote{margin:10px 0 14px;border:0;padding:0;font-size:23px}
+.deepening{margin:38px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.deepening summary{padding:20px 34px 20px 0;font-weight:750;cursor:pointer;position:relative;list-style:none}
+.deepening summary::-webkit-details-marker{display:none}.deepening summary:after{content:'+';position:absolute;right:4px;font-size:24px;font-weight:400;top:13px}.deepening[open] summary:after{content:'−'}
+.deepening>div{padding:4px 0 12px}.deepening h3:first-child{margin-top:18px}
 @media(max-width:800px){
   .lesson-nav{display:none}
   .lesson-picker{display:block;width:100%}
   .lesson-picker>span{display:block;text-transform:uppercase;letter-spacing:.13em;font-size:10px;font-weight:750;margin-bottom:7px}
   .lesson-picker select{display:block;width:100%;min-width:0;border:0;border-bottom:2px solid var(--ink);border-radius:0;background:rgba(255,255,255,.48);color:var(--ink);padding:13px 36px 13px 12px;font:700 13px/1.35 var(--sans);white-space:nowrap;text-overflow:ellipsis}
+  .arrival,.scripture{padding:19px 18px;margin-bottom:26px}
+  .lesson-kicker{max-width:280px;line-height:1.5}
 }
