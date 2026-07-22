@@ -34,6 +34,8 @@ body.journey-open{overflow:hidden}.journey{position:fixed;inset:0;background:var
 body.journey-open > .topbar{visibility:hidden}
 
 .lesson-picker{display:none}
+.perspective-copy{min-height:190px}.perspective-copy p{margin:0 0 12px}.perspective-prompt{border-left:2px solid var(--coral);padding:8px 0 8px 14px;margin-top:18px!important}.perspective-prompt strong,.perspective-grid strong,.mini-practice>strong{display:block;color:var(--ink);font-size:12px;margin-bottom:4px}.perspective-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.perspective-grid article{background:rgba(255,255,255,.45);padding:15px}.mini-practice label{display:block;font-family:var(--serif);font-size:17px;color:var(--ink);margin-top:18px}.mini-practice textarea{width:100%;resize:vertical;border:0;border-bottom:1px solid var(--ink);background:transparent;padding:12px 0;font:16px/1.45 var(--serif);color:var(--ink);outline:none}.save-hint{display:block;font-size:10px;margin-top:7px;color:var(--muted)}
+@media(max-width:700px){.perspectives{gap:15px;overflow-x:auto}.perspective{white-space:nowrap}.perspective-copy{min-height:0}.perspective-grid{grid-template-columns:1fr}}
 .arrival,.scripture{margin:0 0 30px;padding:22px 24px;border-left:3px solid var(--blue);background:rgba(157,199,198,.16)}
 .arrival>strong,.scripture>strong{display:block;text-transform:uppercase;letter-spacing:.12em;font-size:10px;margin-bottom:9px}
 .arrival p,.scripture p{margin-bottom:0}.scripture{border-left-color:var(--coral);background:rgba(239,154,126,.10)}

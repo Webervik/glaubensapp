@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#f4f0e7">
   <title>WEITER GLAUBEN – Glaube entdecken</title>
   <meta name="description" content="Christlichen Glauben offen, wissenschaftlich und ohne Glaubensdruck erkunden.">
-  <link rel="stylesheet" href="styles.css?v=20260721-1">
+  <link rel="stylesheet" href="styles.css?v=20260722-1">
 </head>
 <body>
   <header class="topbar">
@@ -57,15 +57,17 @@
         <div class="feature-content">
           <div class="tags"><span>Bibel im Kontext</span><span>Zweifel</span></div>
           <p class="feature-intro">Dieser kurze Satz enthält beides: Vertrauen und Unsicherheit. Der biblische Text verlangt keine widerspruchsfreie Gewissheit.</p>
-          <div class="perspectives">
-            <button class="perspective active" data-perspective="context">Im Kontext</button>
-            <button class="perspective" data-perspective="viewpoints">Perspektiven</button>
-            <button class="perspective" data-perspective="practice">Für dich</button>
+          <div class="perspectives" role="tablist" aria-label="Zugänge zum Tagesimpuls">
+            <button class="perspective active" id="tab-context" role="tab" aria-selected="true" aria-controls="perspective-content" data-perspective="context">Im Kontext</button>
+            <button class="perspective" id="tab-viewpoints" role="tab" aria-selected="false" aria-controls="perspective-content" data-perspective="viewpoints">Perspektiven</button>
+            <button class="perspective" id="tab-practice" role="tab" aria-selected="false" aria-controls="perspective-content" data-perspective="practice">Für dich</button>
           </div>
-          <div class="perspective-copy" aria-live="polite">
-            Der Vater eines kranken Kindes spricht diesen Satz zu Jesus. Er formuliert kein Glaubensbekenntnis, sondern eine Spannung – und wird damit ernst genommen.
+          <div class="perspective-copy" id="perspective-content" role="tabpanel" aria-labelledby="tab-context" aria-live="polite">
+            <p>Der Satz fällt nicht in einer ruhigen Lehrstunde. Ein Vater bittet Jesus um Hilfe für sein krankes Kind. Er hat Hoffnung – und zugleich Angst, wieder enttäuscht zu werden.</p>
+            <p>Jesus verlangt von ihm kein widerspruchsfreies Bekenntnis. Der Vater bringt Vertrauen und Unglauben gemeinsam zur Sprache. Genau mit diesem unfertigen Satz bleibt er im Gespräch.</p>
+            <p class="perspective-prompt"><strong>Lesefrage</strong> Was verändert sich, wenn Zweifel hier nicht als Gegenteil, sondern als Teil des Glaubens erscheint?</p>
           </div>
-          <button class="text-link" data-continue>Weiterlesen <span>→</span></button>
+          <button class="text-link" data-continue>In Etappe 2 vertiefen <span>→</span></button>
         </div>
       </article>
     </section>
@@ -98,12 +100,12 @@
       <div class="question-copy">
         <p class="eyebrow">Frag, was dich wirklich beschäftigt</p>
         <h2>Keine Frage ist<br>zu groß. Oder zu klein.</h2>
-        <p>Du bekommst keine fertige Wahrheit, sondern Orientierung: verständlich, mit Quellen und unterschiedlichen Perspektiven.</p>
+        <p>Halte deine eigene Frage fest. Die persönliche Antwortfunktion ist noch im Aufbau; die vorhandenen Wege bieten dir schon jetzt fundierte Orientierung.</p>
       </div>
       <form class="ask-box" id="ask-form">
         <label for="question">Deine Frage</label>
         <textarea id="question" rows="3" placeholder="Zum Beispiel: Kann ich an Gott glauben, ohne mir Gott als Person vorzustellen?"></textarea>
-        <div class="ask-footer"><span>Deine Frage bleibt auf diesem Gerät.</span><button class="button dark" type="submit">Frage erkunden <span>→</span></button></div>
+        <div class="ask-footer"><span>Deine Frage bleibt auf diesem Gerät.</span><button class="button dark" type="submit">Frage speichern <span>→</span></button></div>
       </form>
     </section>
 
@@ -137,13 +139,13 @@
     </section>
   </main>
 
-  <footer><a class="brand" href="#start"><span class="brand-mark"><span></span></span><span>WEITER GLAUBEN</span></a><p>Weiter glauben. Weiter denken.</p><span>Ein erster Prototyp</span></footer>
+  <footer><a class="brand" href="#start"><span class="brand-mark"><span></span></span><span>WEITER GLAUBEN</span></a><p>Weiter glauben. Weiter denken.</p><span>Im Aufbau</span></footer>
 
   <dialog id="question-dialog">
     <button class="dialog-close" aria-label="Schließen">×</button>
     <p class="eyebrow">Deine Frage</p><h2>Was beschäftigt dich?</h2>
-    <p>Hier darf eine Frage unfertig sein. Wir zeigen dir anschließend Hintergründe, verschiedene Sichtweisen und mögliche nächste Schritte.</p>
-    <form method="dialog"><textarea rows="4" placeholder="Schreib einfach, wie du es sagen würdest …"></textarea><button class="button primary" value="submit">Frage erkunden <span>→</span></button></form>
+    <p>Hier darf eine Frage unfertig sein. Sie wird auf diesem Gerät vorgemerkt; eine persönliche Antwortfunktion ist noch im Aufbau.</p>
+    <form method="dialog"><textarea id="dialog-question" rows="4" placeholder="Schreib einfach, wie du es sagen würdest …"></textarea><button class="button primary" value="submit">Frage speichern <span>→</span></button></form>
   </dialog>
   <dialog id="progress-dialog" class="progress-dialog">
     <button class="dialog-close" aria-label="Schließen">×</button>
@@ -203,7 +205,7 @@
       </article>
     </div>
   </section>
-  <div class="toast" role="status" aria-live="polite">Danke. Im nächsten Prototyp wird deine Frage wirklich beantwortet.</div>
-  <script src="app.js?v=20260721-1"></script>
+  <div class="toast" role="status" aria-live="polite">Gespeichert.</div>
+  <script src="app.js?v=20260722-1"></script>
 </body>
 </html>

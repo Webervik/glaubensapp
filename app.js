@@ -1,19 +1,37 @@
 const perspectiveTexts = {
-  context: 'Der Vater eines kranken Kindes spricht diesen Satz zu Jesus. Er formuliert kein Glaubensbekenntnis, sondern eine Spannung – und wird damit ernst genommen.',
-  viewpoints: 'Manche lesen die Szene als Ruf zu größerem Vertrauen. Andere erkennen darin einen Glauben, der gerade im Zweifel ehrlich wird. Beides bleibt im Text nebeneinander stehen.',
-  practice: 'Vervollständige für dich zwei Sätze: „Ich vertraue darauf, dass …“ und „Ich kann gerade nicht glauben, dass …“. Du musst den Widerspruch nicht auflösen.'
+  context: `<p>Der Satz fällt nicht in einer ruhigen Lehrstunde. Ein Vater bittet Jesus um Hilfe für sein krankes Kind. Er hat Hoffnung – und zugleich Angst, wieder enttäuscht zu werden.</p><p>Jesus verlangt von ihm kein widerspruchsfreies Bekenntnis. Der Vater bringt Vertrauen und Unglauben gemeinsam zur Sprache. Genau mit diesem unfertigen Satz bleibt er im Gespräch.</p><p class="perspective-prompt"><strong>Lesefrage</strong> Was verändert sich, wenn Zweifel hier nicht als Gegenteil, sondern als Teil des Glaubens erscheint?</p>`,
+  viewpoints: `<div class="perspective-grid"><article><strong>Vertrauen lernen</strong><p>Traditionell wird der Satz als Bitte verstanden, im Vertrauen zu wachsen. Zweifel ist dabei keine Schuld, sondern etwas, das Hilfe braucht.</p></article><article><strong>Ehrlich glauben</strong><p>Eine liberale Lesart betont die Wahrhaftigkeit: Glaube beginnt nicht bei Gewissheit, sondern dort, wo ein Mensch seine Spannung nicht verbirgt.</p></article><article><strong>Kritisch weiterfragen</strong><p>Die Erzählung heilt am Ende ein Kind. Das darf nicht zur Behauptung werden, genügend Glaube heile jede Krankheit. Unerfüllte Bitten sind kein persönliches Versagen.</p></article></div><p class="perspective-prompt"><strong>Prüffrage</strong> Welche Deutung macht dich freier und verantwortlicher – und welche setzt dich unter Druck?</p>`,
+  practice: `<div class="mini-practice"><strong>Zwei ehrliche Sätze · etwa 3 Minuten</strong><p>Atme einmal bewusst aus. Vervollständige dann beide Anfänge. Der Widerspruch darf stehen bleiben.</p><label for="daily-reflection">Ich vertraue darauf, dass …<br>Ich kann gerade nicht glauben, dass …</label><textarea id="daily-reflection" rows="4" placeholder="Deine Gedanken – nur auf diesem Gerät"></textarea><span class="save-hint" aria-live="polite">Wird beim Schreiben auf diesem Gerät gespeichert.</span></div>`
 };
+
+function connectDailyReflection() {
+  const note = document.querySelector('#daily-reflection');
+  if (!note) return;
+  note.value = localStorage.getItem('weiter-glauben-daily-reflection') || '';
+  note.addEventListener('input', () => localStorage.setItem('weiter-glauben-daily-reflection', note.value));
+}
 
 document.querySelectorAll('.perspective').forEach(button => {
   button.addEventListener('click', () => {
-    document.querySelectorAll('.perspective').forEach(item => item.classList.remove('active'));
-    button.classList.add('active');
-    document.querySelector('.perspective-copy').textContent = perspectiveTexts[button.dataset.perspective];
+    document.querySelectorAll('.perspective').forEach(item => {
+      const selected = item === button;
+      item.classList.toggle('active', selected);
+      item.setAttribute('aria-selected', String(selected));
+    });
+    const panel = document.querySelector('.perspective-copy');
+    panel.innerHTML = perspectiveTexts[button.dataset.perspective];
+    panel.setAttribute('aria-labelledby', button.id);
+    connectDailyReflection();
   });
 });
 
 const dialog = document.querySelector('#question-dialog');
-document.querySelectorAll('[data-open-dialog]').forEach(button => button.addEventListener('click', () => dialog.showModal()));
+const savedOpenQuestion = localStorage.getItem('weiter-glauben-open-question') || '';
+document.querySelector('#question').value = savedOpenQuestion;
+document.querySelectorAll('[data-open-dialog]').forEach(button => button.addEventListener('click', () => {
+  dialog.querySelector('#dialog-question').value = localStorage.getItem('weiter-glauben-open-question') || '';
+  dialog.showModal();
+}));
 document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
 
 const toast = document.querySelector('.toast');
@@ -24,10 +42,21 @@ function showToast() {
 
 document.querySelector('#ask-form').addEventListener('submit', event => {
   event.preventDefault();
-  if (document.querySelector('#question').value.trim()) showToast();
+  const question = document.querySelector('#question').value.trim();
+  if (question) {
+    localStorage.setItem('weiter-glauben-open-question', question);
+    showToastMessage('Deine Frage ist auf diesem Gerät gespeichert. Die persönliche Antwortfunktion ist noch im Aufbau.');
+  }
 });
-dialog.querySelector('form').addEventListener('submit', showToast);
-document.querySelector('[data-continue]').addEventListener('click', showToast);
+dialog.querySelector('form').addEventListener('submit', () => {
+  const question = dialog.querySelector('#dialog-question').value.trim();
+  if (question) localStorage.setItem('weiter-glauben-open-question', question);
+  showToastMessage(question ? 'Deine Frage ist auf diesem Gerät gespeichert.' : 'Es wurde keine Frage gespeichert.');
+});
+document.querySelector('[data-continue]').addEventListener('click', () => {
+  openJourney('intro');
+  renderLesson(1);
+});
 
 const navLinks = document.querySelectorAll('.topbar nav a');
 const observed = document.querySelectorAll('main section[id]');
