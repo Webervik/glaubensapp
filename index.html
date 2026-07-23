@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#f4f0e7">
   <title>WEITER GLAUBEN – Glaube entdecken</title>
   <meta name="description" content="Christlichen Glauben offen, wissenschaftlich und ohne Glaubensdruck erkunden.">
-  <link rel="stylesheet" href="styles.css?v=20260723-2">
+  <link rel="stylesheet" href="styles.css?v=20260723-3">
 </head>
 <body>
   <header class="topbar">
@@ -19,6 +19,7 @@
       <a href="#wege">Wege</a>
       <a href="#fragen">Fragen</a>
       <a href="#kontakt">Kontakt</a>
+      <a href="#praxistest">Praxistest</a>
     </nav>
     <button class="profile" aria-label="Gespeicherten Stand verwalten" data-open-progress>Stand</button>
   </header>
@@ -129,6 +130,112 @@
       </div>
     </section>
 
+    <section class="pilot section" id="praxistest">
+      <div class="pilot-intro">
+        <p class="eyebrow">WEITER GLAUBEN erproben</p>
+        <h2>Dein ehrlicher Eindruck hilft.</h2>
+        <p>Nimm dir möglichst 15–20 Minuten und nutze die Seite so, wie du es auch ohne Testauftrag tun würdest. Es geht nicht darum, etwas richtig zu machen, sondern darum, wo die Seite trägt, irritiert oder im Weg steht.</p>
+        <div class="pilot-steps">
+          <p class="eyebrow">Fünf kleine Aufgaben</p>
+          <ol>
+            <li>Erkunde den Tagesimpuls und öffne alle drei Perspektiven.</li>
+            <li>Beginne einen der beiden Wege und lies mindestens zwei Etappen.</li>
+            <li>Öffne einmal „Tiefer gehen“ und einen weiterführenden externen Beitrag.</li>
+            <li>Schreibe eine kurze Notiz, verlasse den Weg und prüfe unter „Stand“, ob du sie wiederfindest.</li>
+            <li>Sieh dir den Bereich „Kontakt“ an und frage dich, ob der vorgeschlagene nächste Schritt für dich denkbar wäre.</li>
+          </ol>
+          <a class="button primary" href="#start">Test oben beginnen <span>↑</span></a>
+        </div>
+      </div>
+
+      <form class="feedback-form" id="feedback-form">
+        <div class="feedback-heading">
+          <p class="eyebrow">Rückmeldung</p>
+          <h3>Was hast du erlebt?</h3>
+          <p>Wir fragen weder Namen noch E-Mail-Adresse ab. Bitte nenne in Freitexten keine Namen, Kontaktdaten oder sensiblen Gesundheitsinformationen.</p>
+        </div>
+
+        <label for="feedback-area">Was hast du hauptsächlich getestet?</label>
+        <select id="feedback-area" name="area" required>
+          <option value="">Bitte auswählen</option>
+          <option value="daily">Vor allem den Tagesimpuls</option>
+          <option value="intro">Weg 01: Kann ich glauben?</option>
+          <option value="bible">Weg 02: Die Bibel lesen</option>
+          <option value="mixed">Mehrere Bereiche</option>
+        </select>
+
+        <fieldset>
+          <legend>Welches Gerät hast du benutzt?</legend>
+          <div class="choice-row">
+            <label><input type="radio" name="device" value="phone" required> Smartphone</label>
+            <label><input type="radio" name="device" value="tablet"> Tablet</label>
+            <label><input type="radio" name="device" value="computer"> Computer</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Wie gut konntest du dich orientieren?</legend>
+          <div class="scale" aria-label="Orientierung von eins bis fünf">
+            <span>schlecht</span>
+            <label><input type="radio" name="orientation" value="1" required><span>1</span></label>
+            <label><input type="radio" name="orientation" value="2"><span>2</span></label>
+            <label><input type="radio" name="orientation" value="3"><span>3</span></label>
+            <label><input type="radio" name="orientation" value="4"><span>4</span></label>
+            <label><input type="radio" name="orientation" value="5"><span>5</span></label>
+            <span>sehr gut</span>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Wie war die inhaltliche Tiefe für dich?</legend>
+          <div class="choice-row">
+            <label><input type="radio" name="depth" value="too_shallow" required> Zu oberflächlich</label>
+            <label><input type="radio" name="depth" value="right"> Genau richtig</label>
+            <label><input type="radio" name="depth" value="too_demanding"> Zu anspruchsvoll</label>
+          </div>
+        </fieldset>
+
+        <label for="feedback-stop">Wo wolltest du abbrechen oder bist ins Stocken geraten?</label>
+        <textarea id="feedback-stop" name="stopPoint" rows="3" maxlength="1200" placeholder="Eine Stelle, ein Klick oder ein Gedanke …"></textarea>
+
+        <label for="feedback-resonance">Was hat dich berührt, interessiert oder positiv überrascht?</label>
+        <textarea id="feedback-resonance" name="resonance" rows="3" maxlength="1200" placeholder="Du musst nichts Persönliches erzählen."></textarea>
+
+        <label for="feedback-irritation">Was klang künstlich, belehrend, unklar oder theologisch fragwürdig?</label>
+        <textarea id="feedback-irritation" name="irritation" rows="3" maxlength="1200"></textarea>
+
+        <label for="feedback-question">Welche Frage blieb für dich unbeantwortet?</label>
+        <textarea id="feedback-question" name="openQuestion" rows="3" maxlength="1200"></textarea>
+
+        <fieldset>
+          <legend>Wäre ein unverbindlicher Kontakt zu einer evangelischen Gemeinde für dich nach dieser Seite denkbar?</legend>
+          <div class="choice-row">
+            <label><input type="radio" name="churchContact" value="yes" required> Ja</label>
+            <label><input type="radio" name="churchContact" value="maybe"> Vielleicht</label>
+            <label><input type="radio" name="churchContact" value="no"> Nein</label>
+          </div>
+        </fieldset>
+
+        <label for="feedback-change">Was sollten wir als Erstes verändern?</label>
+        <textarea id="feedback-change" name="firstChange" rows="3" maxlength="1200" required></textarea>
+
+        <div class="feedback-honeypot" aria-hidden="true">
+          <label for="feedback-website">Website</label>
+          <input id="feedback-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <label class="feedback-consent">
+          <input type="checkbox" name="consent" required>
+          <span>Ich bin damit einverstanden, dass meine namenlose Rückmeldung zur Verbesserung von WEITER GLAUBEN auf dem Server gespeichert und nach spätestens sechs Monaten gelöscht wird. Technische Serverprotokolle können vorübergehend die IP-Adresse enthalten.</span>
+        </label>
+
+        <div class="feedback-submit">
+          <button class="button primary" type="submit">Rückmeldung senden <span>→</span></button>
+          <span class="feedback-status" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </section>
+
     <section class="principles section">
       <p class="eyebrow">Was du von WEITER GLAUBEN erwarten kannst</p>
       <div class="principle-grid">
@@ -207,6 +314,6 @@
     </div>
   </section>
   <div class="toast" role="status" aria-live="polite">Gespeichert.</div>
-  <script src="app.js?v=20260723-2"></script>
+  <script src="app.js?v=20260723-3"></script>
 </body>
 </html>

@@ -53,6 +53,52 @@ dialog.querySelector('form').addEventListener('submit', () => {
   if (question) localStorage.setItem('weiter-glauben-open-question', question);
   showToastMessage(question ? 'Deine Frage ist auf diesem Gerät gespeichert.' : 'Es wurde keine Frage gespeichert.');
 });
+
+const feedbackForm = document.querySelector('#feedback-form');
+feedbackForm.addEventListener('submit', async event => {
+  event.preventDefault();
+  const submitButton = feedbackForm.querySelector('button[type="submit"]');
+  const status = feedbackForm.querySelector('.feedback-status');
+  const formData = new FormData(feedbackForm);
+  const payload = {
+    version: 1,
+    area: formData.get('area'),
+    device: formData.get('device'),
+    orientation: Number(formData.get('orientation')),
+    depth: formData.get('depth'),
+    stopPoint: formData.get('stopPoint'),
+    resonance: formData.get('resonance'),
+    irritation: formData.get('irritation'),
+    openQuestion: formData.get('openQuestion'),
+    churchContact: formData.get('churchContact'),
+    firstChange: formData.get('firstChange'),
+    consent: formData.get('consent') === 'on',
+    website: formData.get('website')
+  };
+
+  submitButton.disabled = true;
+  status.textContent = 'Wird gesendet …';
+  try {
+    const response = await fetch('/api/feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!response.ok) throw new Error(response.status === 429 ? 'rate_limited' : 'send_failed');
+    feedbackForm.classList.add('submitted');
+    feedbackForm.innerHTML = `<div class="feedback-thanks" role="status">
+      <p class="eyebrow">Rückmeldung angekommen</p>
+      <h3>Danke für deine Offenheit.</h3>
+      <p>Deine Antworten wurden ohne Namen und E-Mail-Adresse gespeichert. Sie helfen dabei, WEITER GLAUBEN verständlicher, ehrlicher und hilfreicher zu machen.</p>
+    </div>`;
+  } catch (error) {
+    status.textContent = error.message === 'rate_limited'
+      ? 'Zu viele Versuche. Bitte warte einige Minuten und sende dann erneut.'
+      : 'Das Senden hat nicht geklappt. Deine Eingaben bleiben stehen – bitte versuche es noch einmal.';
+    submitButton.disabled = false;
+  }
+});
+
 document.querySelector('[data-continue]').addEventListener('click', () => {
   openJourney('intro');
   renderLesson(1);

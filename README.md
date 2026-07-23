@@ -16,6 +16,7 @@ Zum Starten `index.html` direkt im Browser öffnen oder im Ordner einen lokalen 
 - anonyme geräteübergreifende Sicherung mit clientseitiger AES-GCM-Verschlüsselung und Wiederherstellungscode
 - behutsame Einladung zur offiziellen landeskirchlichen Gemeindesuche
 - Eingabe für persönliche Glaubensfragen
+- namenloser Online-Praxistest mit strukturiertem Feedback
 - responsive Darstellung für Smartphone und Desktop
 
 Die Inhalte sind redaktionelle Demonstrationen und noch kein vollständig geprüftes oder lizenziertes Inhaltsangebot.
@@ -23,6 +24,10 @@ Die Inhalte sind redaktionelle Demonstrationen und noch kein vollständig geprü
 ## Verschlüsselte Online-Sicherung
 
 Der Browser erzeugt den Wiederherstellungscode, verschlüsselt den ausgewählten Lernstand lokal und sendet nur den verschlüsselten Datenblock sowie einen aus dem Code abgeleiteten Bezeichner an die API. Der Server kennt den Code und den Klartext nicht. Datensätze laufen zwölf Monate nach der letzten Aktualisierung ab.
+
+## Praxistest und Rückmeldungen
+
+Der Praxistest fragt weder Namen noch E-Mail-Adressen ab. Die API prüft und begrenzt alle Eingaben, speichert keine IP-Adresse in der Rückmeldung und löscht sie spätestens nach sechs Monaten. IP-Adressen können unabhängig davon vorübergehend in den technischen Zugriffsprotokollen des Webservers enthalten sein. Rückmeldungen liegen als einzelne, nur für den Serverdienst lesbare JSON-Dateien unterhalb des konfigurierten Datenverzeichnisses.
 
 ## Inhaltliche Prüfung
 

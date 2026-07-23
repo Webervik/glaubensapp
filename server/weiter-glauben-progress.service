@@ -1,5 +1,5 @@
 [Unit]
-Description=WEITER GLAUBEN encrypted progress storage
+Description=WEITER GLAUBEN progress and feedback storage
 After=network.target
 
 [Service]
