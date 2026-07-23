@@ -40,6 +40,13 @@ body.journey-open > .topbar{visibility:hidden}
 .arrival>strong,.scripture>strong{display:block;text-transform:uppercase;letter-spacing:.12em;font-size:10px;margin-bottom:9px}
 .arrival p,.scripture p{margin-bottom:0}.scripture{border-left-color:var(--coral);background:rgba(239,154,126,.10)}
 .scripture blockquote{margin:10px 0 14px;border:0;padding:0;font-size:23px}
+.feature-visual cite a{text-decoration:underline;text-decoration-color:rgba(255,255,255,.35);text-underline-offset:4px}
+.stage-note{font-size:11px;color:var(--muted);margin:8px 0 16px}
+.scripture-link{display:inline-block;font-size:12px;font-weight:750;text-decoration:underline;text-decoration-color:rgba(25,50,45,.35);text-underline-offset:4px;margin-top:12px}
+.scripture-link:hover,.scripture-link:focus-visible{text-decoration-color:var(--ink)}
+.scripture-links{display:flex;gap:18px;flex-wrap:wrap}
+.action-examples{margin:-8px 0 22px;padding-left:22px}
+.action-examples li{margin:7px 0}
 .deepening{margin:38px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .deepening summary{padding:20px 34px 20px 0;font-weight:750;cursor:pointer;position:relative;list-style:none}
 .deepening summary::-webkit-details-marker{display:none}.deepening summary:after{content:'+';position:absolute;right:4px;font-size:24px;font-weight:400;top:13px}.deepening[open] summary:after{content:'−'}
