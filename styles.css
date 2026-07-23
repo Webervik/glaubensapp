@@ -47,6 +47,13 @@ body.journey-open > .topbar{visibility:hidden}
 .scripture-links{display:flex;gap:18px;flex-wrap:wrap}
 .action-examples{margin:-8px 0 22px;padding-left:22px}
 .action-examples li{margin:7px 0}
+.further-reading{margin:50px 0 8px;padding:27px 29px;background:#e7eadc;border-top:3px solid var(--ink)}
+.lesson-body .further-reading .eyebrow{margin:0 0 10px}
+.lesson-body .further-reading h3{font-size:28px;margin:0 0 5px}
+.lesson-body .further-reading .resource-meta{font-size:11px;font-weight:750;color:var(--muted);margin:0 0 18px}
+.lesson-body .further-reading>p:not(.eyebrow):not(.resource-meta){font-size:14px;margin-bottom:18px}
+.further-reading>a{display:inline-flex;align-items:center;gap:12px;font-size:13px;font-weight:750;text-decoration:underline;text-underline-offset:4px}
+.further-reading small{display:block;border-top:1px solid var(--line);margin-top:22px;padding-top:14px;color:var(--muted);font-size:10px;line-height:1.5}
 .deepening{margin:38px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .deepening summary{padding:20px 34px 20px 0;font-weight:750;cursor:pointer;position:relative;list-style:none}
 .deepening summary::-webkit-details-marker{display:none}.deepening summary:after{content:'+';position:absolute;right:4px;font-size:24px;font-weight:400;top:13px}.deepening[open] summary:after{content:'−'}
@@ -57,5 +64,6 @@ body.journey-open > .topbar{visibility:hidden}
   .lesson-picker>span{display:block;text-transform:uppercase;letter-spacing:.13em;font-size:10px;font-weight:750;margin-bottom:7px}
   .lesson-picker select{display:block;width:100%;min-width:0;border:0;border-bottom:2px solid var(--ink);border-radius:0;background:rgba(255,255,255,.48);color:var(--ink);padding:13px 36px 13px 12px;font:700 13px/1.35 var(--sans);white-space:nowrap;text-overflow:ellipsis}
   .arrival,.scripture{padding:19px 18px;margin-bottom:26px}
+  .further-reading{padding:23px 20px;margin-top:40px}
   .lesson-kicker{max-width:280px;line-height:1.5}
 }
