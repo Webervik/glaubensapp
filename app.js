@@ -27,7 +27,14 @@ document.querySelectorAll('.perspective').forEach(button => {
 
 const dialog = document.querySelector('#question-dialog');
 const savedOpenQuestion = localStorage.getItem('weiter-glauben-open-question') || '';
-document.querySelector('#question').value = savedOpenQuestion;
+const questionField = document.querySelector('#question');
+questionField.value = savedOpenQuestion;
+document.querySelectorAll('[data-question-template]').forEach(button => {
+  button.addEventListener('click', () => {
+    questionField.value = button.dataset.questionTemplate;
+    questionField.focus();
+  });
+});
 document.querySelectorAll('[data-open-dialog]').forEach(button => button.addEventListener('click', () => {
   dialog.querySelector('#dialog-question').value = localStorage.getItem('weiter-glauben-open-question') || '';
   dialog.showModal();
@@ -42,10 +49,10 @@ function showToast() {
 
 document.querySelector('#ask-form').addEventListener('submit', event => {
   event.preventDefault();
-  const question = document.querySelector('#question').value.trim();
+  const question = questionField.value.trim();
   if (question) {
     localStorage.setItem('weiter-glauben-open-question', question);
-    showToastMessage('Deine Frage ist auf diesem Gerät gespeichert. Die persönliche Antwortfunktion ist noch im Aufbau.');
+    showToastMessage('Deine Frage ist auf diesem Gerät gespeichert. Du kannst sie in einen Weg oder ein Gespräch mitnehmen.');
   }
 });
 dialog.querySelector('form').addEventListener('submit', () => {

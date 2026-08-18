@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#f4f0e7">
   <title>WEITER GLAUBEN – Glaube entdecken</title>
   <meta name="description" content="Christlichen Glauben offen, wissenschaftlich und ohne Glaubensdruck erkunden.">
-  <link rel="stylesheet" href="styles.css?v=20260723-3">
+  <link rel="stylesheet" href="styles.css?v=20260818-1">
 </head>
 <body>
   <header class="topbar">
@@ -19,35 +19,60 @@
       <a href="#wege">Wege</a>
       <a href="#fragen">Fragen</a>
       <a href="#kontakt">Kontakt</a>
-      <a href="#praxistest">Praxistest</a>
     </nav>
-    <button class="profile" aria-label="Gespeicherten Stand verwalten" data-open-progress>Stand</button>
+    <button class="profile" aria-label="Gespeicherten Stand verwalten" data-open-progress>Mein Weg</button>
   </header>
 
   <main>
     <section class="hero" id="start">
       <div class="hero-copy">
         <p class="eyebrow">Sonntag, 19. Juli</p>
-        <h1>Du musst nicht alles glauben,<br><em>um anfangen zu können.</em></h1>
-        <p class="lead">Ein offener Raum für deine Fragen, Zweifel und Entdeckungen rund um den christlichen Glauben.</p>
+        <h1>Was trägt, wenn Gewissheiten<br><em>nicht mehr tragen?</em></h1>
+        <p class="lead">Entdecke den christlichen Glauben neu – offen, fundiert und ohne etwas vorspielen zu müssen.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#frage-des-tages">Heute entdecken <span>→</span></a>
-          <button class="button quiet" data-open-dialog>Eine Frage stellen</button>
+          <a class="button primary" href="#frage-des-tages">3 Minuten beginnen <span>→</span></a>
+          <a class="button quiet" href="#fragen">Mit einer Frage starten</a>
         </div>
+        <p class="hero-permission">Du musst nicht alles glauben, um anfangen zu können.</p>
       </div>
-      <div class="orbit" aria-hidden="true">
-        <div class="orbital-line one"></div>
-        <div class="orbital-line two"></div>
-        <div class="sun"></div>
-        <div class="dot dot-a"></div><div class="dot dot-b"></div><div class="dot dot-c"></div>
-        <p>fragen<br>sind<br>willkommen</p>
+      <figure class="hero-human">
+        <img src="assets/meeting-at-cafe.jpg" alt="Zwei Menschen sitzen mit einem aufgeschlagenen Heft an einem Tisch." width="1280" height="854">
+        <figcaption>fragen<br>sind<br>willkommen</figcaption>
+        <small>Foto: rawpixel.com · <a href="https://commons.wikimedia.org/wiki/File:Meeting_at_the_Cafe_(Unsplash).jpg" target="_blank" rel="noopener">Wikimedia Commons, CC0</a></small>
+      </figure>
+    </section>
+
+    <section class="entry-section section" id="einstiege" aria-labelledby="entry-title">
+      <div class="entry-heading">
+        <p class="eyebrow">Du entscheidest, wie weit</p>
+        <h2 id="entry-title">Wie möchtest du beginnen?</h2>
+      </div>
+      <div class="entry-grid">
+        <a class="entry-card lime" href="#frage-des-tages">
+          <span class="entry-time">3 Minuten</span>
+          <strong>Einen Gedanken ausprobieren</strong>
+          <span>Ein Bibelwort, sein Kontext und eine kleine Frage für dich.</span>
+          <i aria-hidden="true">→</i>
+        </a>
+        <a class="entry-card blue" href="#wege">
+          <span class="entry-time">15 Minuten oder länger</span>
+          <strong>Einer Frage tiefer folgen</strong>
+          <span>Etappen, die Wissen, Spiritualität und eigene Erfahrung verbinden.</span>
+          <i aria-hidden="true">→</i>
+        </a>
+        <a class="entry-card coral" href="#kontakt">
+          <span class="entry-time">Persönlich</span>
+          <strong>Ein echtes Gegenüber finden</strong>
+          <span>Unverbindlich Kontakt zu einer evangelischen Gemeinde aufnehmen.</span>
+          <i aria-hidden="true">→</i>
+        </a>
       </div>
     </section>
 
     <section class="today section" id="frage-des-tages">
       <div class="section-heading">
         <div><p class="eyebrow">Ein Gedanke für heute</p><h2>Was, wenn Zweifel zum Glauben gehören?</h2></div>
-        <span class="duration">8 min</span>
+        <span class="duration">3–8 min</span>
       </div>
       <article class="feature-card">
         <div class="feature-visual">
@@ -77,7 +102,6 @@
     <section class="section paths" id="wege">
       <div class="section-heading">
         <div><p class="eyebrow">In deinem Tempo</p><h2>Wege zum Weiterdenken</h2></div>
-        <a href="#alle-wege">Alle Wege <span>→</span></a>
       </div>
       <div class="path-grid">
         <article class="path-card sage">
@@ -90,11 +114,19 @@
           <div><p class="meta">7 Etappen · Vertiefung</p><h3>Die Bibel lesen, ohne sie wörtlich zu nehmen</h3><p>Entdecke, was historische Kontexte, Textsorten und verschiedene Lesarten verändern.</p></div>
           <button aria-label="Weg Bibel lesen starten" data-start-path="bible">→</button>
         </article>
-        <article class="path-card coral">
-          <div class="path-icon" aria-hidden="true">◌</div>
-          <div><p class="meta">In Vorbereitung · Persönlich</p><h3>Glauben nach dem Fundamentalismus</h3><p>Was darf bleiben, wenn alte Gewissheiten nicht mehr tragen?</p></div>
-          <button aria-label="Weg noch in Vorbereitung" data-coming-soon>→</button>
-        </article>
+      </div>
+    </section>
+
+    <section class="voices section" aria-labelledby="voices-title">
+      <div class="voices-copy">
+        <p class="eyebrow">Vielleicht klingt deine Frage so</p>
+        <h2 id="voices-title">Glaube beginnt nicht immer mit einer Antwort.</h2>
+        <div class="voice-lines">
+          <p>„Ich glaube nicht mehr wie früher. Aber die Frage nach Gott ist geblieben.“</p>
+          <p>„Mit manchen biblischen Texten ringe ich. Gerade deshalb möchte ich sie verstehen.“</p>
+          <p>„Ich wünsche mir ein Gespräch, ohne mich gleich festlegen zu müssen.“</p>
+        </div>
+        <a class="text-action" href="#fragen">Deine eigene Frage festhalten <span>→</span></a>
       </div>
     </section>
 
@@ -102,12 +134,17 @@
       <div class="question-copy">
         <p class="eyebrow">Frag, was dich wirklich beschäftigt</p>
         <h2>Keine Frage ist<br>zu groß. Oder zu klein.</h2>
-        <p>Halte deine eigene Frage fest. Die persönliche Antwortfunktion ist noch im Aufbau; die vorhandenen Wege bieten dir schon jetzt fundierte Orientierung.</p>
+        <p>Halte fest, was dich beschäftigt. Deine Frage bleibt auf diesem Gerät. Anschließend kannst du einen passenden Weg wählen oder sie in ein persönliches Gespräch mitnehmen.</p>
       </div>
       <form class="ask-box" id="ask-form">
+        <div class="question-prompts" aria-label="Mögliche Fragen">
+          <button type="button" data-question-template="Kann ich glauben, obwohl ich zweifle?">Glauben und zweifeln</button>
+          <button type="button" data-question-template="Was mache ich mit schwierigen Bibeltexten?">Schwierige Bibeltexte</button>
+          <button type="button" data-question-template="Kann Kirche nach schlechten Erfahrungen noch ein Ort für mich sein?">Kirche nach Verletzungen</button>
+        </div>
         <label for="question">Deine Frage</label>
         <textarea id="question" rows="3" placeholder="Zum Beispiel: Kann ich an Gott glauben, ohne mir Gott als Person vorzustellen?"></textarea>
-        <div class="ask-footer"><span>Deine Frage bleibt auf diesem Gerät.</span><button class="button dark" type="submit">Frage speichern <span>→</span></button></div>
+        <div class="ask-footer"><span>Privat und nur in diesem Browser.</span><button class="button dark" type="submit">Frage festhalten <span>→</span></button></div>
       </form>
     </section>
 
@@ -130,7 +167,7 @@
       </div>
     </section>
 
-    <section class="pilot section" id="praxistest">
+    <section class="pilot section" id="praxistest" hidden>
       <div class="pilot-intro">
         <p class="eyebrow">WEITER GLAUBEN erproben</p>
         <h2>Dein ehrlicher Eindruck hilft.</h2>
@@ -247,12 +284,12 @@
     </section>
   </main>
 
-  <footer><a class="brand" href="#start"><span class="brand-mark"><span></span></span><span>WEITER GLAUBEN</span></a><p>Weiter glauben. Weiter denken.</p><span>Im Aufbau</span></footer>
+  <footer><a class="brand" href="#start"><span class="brand-mark"><span></span></span><span>WEITER GLAUBEN</span></a><p>Weiter glauben. Weiter denken.</p><span>Offen · fundiert · vielstimmig</span></footer>
 
   <dialog id="question-dialog">
     <button class="dialog-close" aria-label="Schließen">×</button>
     <p class="eyebrow">Deine Frage</p><h2>Was beschäftigt dich?</h2>
-    <p>Hier darf eine Frage unfertig sein. Sie wird auf diesem Gerät vorgemerkt; eine persönliche Antwortfunktion ist noch im Aufbau.</p>
+    <p>Hier darf eine Frage unfertig sein. Sie wird nur auf diesem Gerät vorgemerkt und kann dich durch die vorhandenen Wege oder in ein persönliches Gespräch begleiten.</p>
     <form method="dialog"><textarea id="dialog-question" rows="4" placeholder="Schreib einfach, wie du es sagen würdest …"></textarea><button class="button primary" value="submit">Frage speichern <span>→</span></button></form>
   </dialog>
   <dialog id="progress-dialog" class="progress-dialog">
@@ -314,6 +351,6 @@
     </div>
   </section>
   <div class="toast" role="status" aria-live="polite">Gespeichert.</div>
-  <script src="app.js?v=20260723-3"></script>
+  <script src="app.js?v=20260818-1"></script>
 </body>
 </html>

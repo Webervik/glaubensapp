@@ -8,7 +8,7 @@ Zum Starten `index.html` direkt im Browser öffnen oder im Ordner einen lokalen 
 
 - Startseite mit klarem Produktversprechen
 - exemplarischer Tagesimpuls mit drei Perspektiven
-- drei thematische Entdeckungswege
+- zwei vollständig nutzbare thematische Entdeckungswege
 - vollständig ausgearbeiteter 7-teiliger Weg „Die Bibel lesen, ohne sie wörtlich zu nehmen“
 - vollständig ausgearbeiteter 8-teiliger Einstiegsweg „Kann ich glauben – und wenn ja, wie?“
 - lokal gespeicherter Lernfortschritt und persönliche Reflexionsnotizen
@@ -16,8 +16,11 @@ Zum Starten `index.html` direkt im Browser öffnen oder im Ordner einen lokalen 
 - anonyme geräteübergreifende Sicherung mit clientseitiger AES-GCM-Verschlüsselung und Wiederherstellungscode
 - behutsame Einladung zur offiziellen landeskirchlichen Gemeindesuche
 - Eingabe für persönliche Glaubensfragen
-- namenloser Online-Praxistest mit strukturiertem Feedback
 - responsive Darstellung für Smartphone und Desktop
+
+## Bildmaterial
+
+Die Startseite verwendet das Foto *Meeting at the Cafe* von rawpixel.com. Es wurde 2017 vor dem Lizenzwechsel von Unsplash unter CC0 veröffentlicht. Quelle, Lizenz und Bearbeitung sind in `assets/README.md` dokumentiert und auf der Website direkt am Bild verlinkt.
 
 Die Inhalte sind redaktionelle Demonstrationen und noch kein vollständig geprüftes oder lizenziertes Inhaltsangebot.
 
